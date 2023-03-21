@@ -1,0 +1,201 @@
+.Main {
+  text-align: center;
+  background-color: white;
+  max-width: none;
+  max-height: none;
+  color: black;
+  font-family: Verdana;
+}
+
+nav {
+  height: 65px;
+  width: 100%;
+  margin: 10px;
+  border-bottom: 1px solid grey;
+  background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+.board {
+  width: 100%;
+  height: 550px;
+  margin-bottom: 20px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.row > div {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #bbb;
+  margin: 4px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+.row > div.green {
+  --background: #5ac85a;
+  --border-color: #5ac85a;
+}
+.row > div.grey {
+  --background: #a1a1a1;
+  --border-color: #a1a1a1;
+}
+.row > div.yellow {
+  --background: #e2cc68;
+  --border-color: #e2cc68;
+}
+
+.letter {
+  flex: 33%;
+  height: 100%;
+  border: 1px solid black;
+  margin: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: bolder;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 767px) {
+  .letter {
+    font-size: 8px;
+  }
+  .key {
+    font-size: 16px;
+  }
+}
+
+.keyboard {
+  max-width: 500px;
+  margin: 90px auto;
+}
+
+.line1 {
+  flex: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2px;
+}
+.line2 {
+  flex: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2px;
+}
+.line3 {
+  flex: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2px;
+}
+@media screen and (max-width: 768px) {
+  .line1,
+  .line2,
+  .line3 {
+    flex: 100%;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.key {
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  background-color: grey;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+#big {
+  width: 100px;
+}
+
+.game {
+  width: 100vw;
+  height: calc(100vh - 170px);
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  flex-direction: column;
+}
+
+#correct {
+  background-color: #528d4e;
+}
+
+#onlyLetter {
+  background-color: #b49f39;
+}
+
+#incorrect {
+  background-color: #3a393c;
+}
+
+/* Update the keyboard color of the eleminated word */
+#eliminated {
+  background-color: #3a393c;
+}
+
+h2 {
+  font-size: 26px;
+  color: black;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-inline: 10px;
+}
+
+@media (max-width: 767px) {
+  h2 {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+}
+
+h3 {
+  font-size: 13px;
+  color: grey;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  line-height: 1;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+@media (max-width: 767px) {
+  h3 {
+    font-size: 15px;
+    line-height: 1;
+  }
+}
+
+.my-button {
+  background-color: grey;
+  font-size: 18px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px;
+}
