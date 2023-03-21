@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+
 # Yanting-Lai-Project-2
+
 =======
+
 # Wordle Game
 
-# https://yanting-lai-project2-0.onrender.com
+# https://yanting-lai-project2-3.onrender.com
 
 # Getting Started with Create React App
 
@@ -75,4 +78,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 36d9f54 (Inital commit)
+
+> > > > > > > 36d9f54 (Inital commit)
