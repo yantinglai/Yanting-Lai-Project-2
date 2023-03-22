@@ -229,7 +229,8 @@ function Main(props) {
     }
   };
 
-  function restartGame() {
+  function restartGame(event) {
+    event.preventDefault();
     window.location.reload(false);
   }
 
