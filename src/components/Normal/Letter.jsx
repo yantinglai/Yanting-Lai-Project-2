@@ -18,7 +18,7 @@ function Letter({ position, attempt }) {
     if (letter !== '' && !correct && !onlyLetter) {
       setEliminatedLetters((prev) => [...prev, letter]);
     }
-  }, [curAttempt.attempt]);
+  }, [correct, curAttempt.attempt, letter, onlyLetter, setEliminatedLetters]);
   return (
     <div className="letter" id={isLetter}>
       {letter}

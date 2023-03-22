@@ -1,18 +1,19 @@
-import React, { useCallback, useEffect, useContext } from "react";
-import Key from "./Key";
-import { AppContext } from "../Main";
+import React, { useCallback, useEffect, useContext } from 'react';
+import Key from './Key';
+import { AppContext } from '../Main';
 
 function Keyboard() {
   const { onSelect, onDelete, enterWord, eliminatedLetters } =
     useContext(AppContext);
-  const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-  const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-  const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
+  const keys1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
+  const keys2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
+  const keys3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const keyboardAction = useCallback((action) => {
-    if (action.key === "Enter") {
+    if (action.key === 'Enter') {
       enterWord();
-    } else if (action.key === "Backspace") {
+    } else if (action.key === 'Backspace') {
       onDelete();
     } else {
       keys1.forEach((key) => {
@@ -34,10 +35,10 @@ function Keyboard() {
   });
 
   useEffect(() => {
-    document.addEventListener("keydown", keyboardAction);
+    document.addEventListener('keydown', keyboardAction);
 
     return () => {
-      document.removeEventListener("keydown", keyboardAction);
+      document.removeEventListener('keydown', keyboardAction);
     };
   }, [keyboardAction]);
 
@@ -58,13 +59,13 @@ function Keyboard() {
         })}
       </div>
       <div className="line3">
-        <Key keyValue={"ENTER"} big />
+        <Key keyValue={'ENTER'} big />
         {keys3.map((key) => {
           return (
             <Key keyValue={key} eliminated={eliminatedLetters.includes(key)} />
           );
         })}
-        <Key keyValue={"DELETE"} big />
+        <Key keyValue={'DELETE'} big />
       </div>
     </div>
   );

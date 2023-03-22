@@ -14,6 +14,8 @@ import { useEffect } from 'react';
 export const AppContext = createContext();
 
 function Main(props) {
+  const [enteredWords, setEnteredWords] = useState([]);
+
   const [normalBoard, setnormalBoard] = useState(initialNormal);
   const [hardBoard, sethardBoard] = useState(initialHard);
 
@@ -32,6 +34,56 @@ function Main(props) {
     gotAnswer: false,
   });
 
+  // Exta Credit: Use the useEffect hook to save the state in localStorage
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     'gameState',
+  //     JSON.stringify({
+  //       enteredWords,
+  //       normalBoard,
+  //       hardBoard,
+  //       curAttempt,
+  //       eliminatedLetters,
+  //       endOfGame,
+  //     })
+  //   );
+  // }, [
+  //   enteredWords,
+  //   normalBoard,
+  //   hardBoard,
+  //   curAttempt,
+  //   eliminatedLetters,
+  //   endOfGame,
+  // ]);
+
+  // useEffect(() => {
+  //   // Check if there is a saved state in localStorage
+  //   const savedState = localStorage.getItem('gameState');
+  //   if (savedState) {
+  //     // Parse the saved state as JSON and update the state
+  //     const parsedState = JSON.parse(savedState);
+  //     setEnteredWords(parsedState.enteredWords);
+  //     setnormalBoard(parsedState.normalBoard);
+  //     sethardBoard(parsedState.hardBoard);
+  //     setCurAttempt(parsedState.curAttempt);
+  //     setEliminatedLetters(parsedState.eliminatedLetters);
+  //     setEndOfGame(parsedState.endOfGame);
+  //   } else {
+  //     // If there is no saved state, create a new one
+  //     if (props.hard === true) {
+  //       createHardWordSet().then((hardWords) => {
+  //         setHardWordSet(hardWords.hardWordSet);
+  //         setHardAnswer(hardWords.randomHardWord);
+  //       });
+  //     } else {
+  //       createWordSet().then((words) => {
+  //         setWordSet(words.wordSet);
+  //         setAnswer(words.randomWord);
+  //       });
+  //     }
+  //   }
+  // }, [props.hard]);
+
   useEffect(() => {
     if (props.hard === true) {
       createHardWordSet().then((hardWords) => {
@@ -44,7 +96,7 @@ function Main(props) {
         setAnswer(words.randomWord);
       });
     }
-  }, []);
+  }, [props.hard]);
 
   // Select hard or easy mode
   const onSelect = (keyValue) => {
@@ -119,7 +171,13 @@ function Main(props) {
       }
 
       if (hardWordSet.has(currWord.toLowerCase())) {
+        if (enteredWords.includes(currWord.toLowerCase())) {
+          const errorMessage = document.getElementById('error-message');
+          errorMessage.textContent = 'Word already entered!';
+          return;
+        }
         setCurAttempt({ attempt: curAttempt.attempt + 1, position: 0 });
+        setEnteredWords([...enteredWords, currWord.toLowerCase()]);
       } else {
         const errorMessage = document.getElementById('error-message');
         errorMessage.textContent = 'Please enter a valid word.';
@@ -147,7 +205,13 @@ function Main(props) {
       }
 
       if (wordSet.has(currWord.toLowerCase())) {
+        if (enteredWords.includes(currWord.toLowerCase())) {
+          const errorMessage = document.getElementById('error-message');
+          errorMessage.textContent = 'Word already entered!';
+          return;
+        }
         setCurAttempt({ attempt: curAttempt.attempt + 1, position: 0 });
+        setEnteredWords([...enteredWords, currWord.toLowerCase()]);
       } else {
         const errorMessage = document.getElementById('error-message');
         errorMessage.textContent = 'Please enter a valid word.';
